@@ -24,6 +24,10 @@ export function activate(context: vscode.ExtensionContext) {
 		items.push({ description: '选中-斜体', label: 'Font Italic', command: surroundWithItalic });
 		items.push({ description: '选中-代码', label: 'Font Code', command: surroundWithCode });
 
+		items.push({label: 'Color: Red', description: '改变字体：红色',  command: changeColorRed });
+		items.push({label: 'Color: Green', description: '改变字体：绿色',  command: changeColorGreen });
+		items.push({label: 'Color: Blue', description: '改变字体：蓝色',  command: changeColorBlue });
+
 		// TODO: 需要一种通用逻辑, 选中"改变选中颜色"后, 能够输入#fffff(eg)来插入css样式
 	
 		vscode.window.showQuickPick(items, { matchOnDetail: true, matchOnDescription: true }).then(selectedItem => {
@@ -60,6 +64,27 @@ function surroundWithItalic() {
 function surroundWithCode() {
 	let msg = '`';
 	let snippet = msg + '${TM_SELECTED_TEXT}' + msg;
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+function changeColorRed() {
+	let color:string = '#FF1E10';
+	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+function changeColorGreen() {
+	let color:string = '#1AAD19';
+	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+function changeColorBlue() {
+	let color:string = '#1A9BFF';
+	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
