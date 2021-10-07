@@ -19,7 +19,12 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	
 		let items: CommandQuickPickItem[] = [];
-		items.push({ description: '对选中的字体加粗', label: 'Font Bold', command: surroundWithBold });
+		items.push({ description: '选中-加粗', label: 'Font Bold', command: surroundWithBold });
+		items.push({ description: '选中-删除线', label: 'Font Strike-through', command: surroundWithStrikeThrough });
+		items.push({ description: '选中-斜体', label: 'Font Italic', command: surroundWithItalic });
+		items.push({ description: '选中-代码', label: 'Font Code', command: surroundWithCode });
+
+		// TODO: 需要一种通用逻辑, 选中"改变选中颜色"后, 能够输入#fffff(eg)来插入css样式
 	
 		vscode.window.showQuickPick(items, { matchOnDetail: true, matchOnDescription: true }).then(selectedItem => {
 			if (selectedItem && typeof selectedItem.command === 'function') {
@@ -32,11 +37,33 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function surroundWithBold() {
-	let msg = "**";
+	let msg = '**';
 	let snippet = msg + '${TM_SELECTED_TEXT}' + msg;
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
+
+function surroundWithStrikeThrough() {
+	let msg = '~~';
+	let snippet = msg + '${TM_SELECTED_TEXT}' + msg;
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+function surroundWithItalic() {
+	let msg = '*';
+	let snippet = msg + '${TM_SELECTED_TEXT}' + msg;
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+function surroundWithCode() {
+	let msg = '`';
+	let snippet = msg + '${TM_SELECTED_TEXT}' + msg;
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
 
 // this method is called when your extension is deactivated
 export function deactivate() {}

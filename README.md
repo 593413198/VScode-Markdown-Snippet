@@ -1,11 +1,11 @@
-# markdown-snippet README
-
-<!-- This is the README for your extension "markdown-snippet". After writing up a brief description, we recommend including the following sections. -->
+# VScode Markdown Snippet
 
 ## Features
 
-- 1.Bold-font for selected content;
-- 2.TODO...
+<!-- Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file. -->
+
+- 1.Bold-font with selected content
+- 2.todo
 
 ## Extension Settings
 
@@ -18,7 +18,11 @@ This extension contributes the following settings:
 * `myExtension.enable`: enable/disable this extension
 * `myExtension.thing`: set to `blah` to do something
 
-## Release Notes
+## Known Issues
+
+Calling out known issues can help limit users opening duplicate issues against your extension.
+
+<!-- ## Release Notes
 
 Users appreciate release notes as you update your extension.
 
@@ -32,7 +36,7 @@ Fixed issue #.
 
 ### 1.1.0
 
-Added features X, Y, and Z.
+Added features X, Y, and Z. -->
 
 -----------------------------------------------------------------------------------------------------------
 ## Following extension guidelines
