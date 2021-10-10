@@ -28,6 +28,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		items.push({label: 'LaTeX: fraction', description: 'LaTeX：分式',  command: laTexFraction });
 		items.push({label: 'LaTeX: sub-tag', description: 'LaTeX：下标', command: laTexSubtag });
+		items.push({label: 'LaTeX: matrix44', description: 'LaTeX：矩阵4x4', command: laTexMatrix44 });
+		items.push({label: 'LaTeX: matrix33', description: 'LaTeX：矩阵3x3', command: laTexMatrix33 });
+
 		// items.push({label: 'LaTeX: 矩阵3x3',  command: insertTable });
 		// items.push({label: 'LaTeX: 矩阵4x4',  command: insertTable });
 
@@ -124,6 +127,37 @@ function laTexFraction() {
 
 function laTexSubtag() {
 	let str = '$$a_{1}$'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
+
+function laTexMatrix44() {
+	let str = '\n' +
+'$$\n' +
+'\\left[\n' +
+'\\begin{matrix}\n' +
+	'0 & 0 & 0 & 0\\\\\\\n' +
+	'0 & 0 & 0 & 0\\\\\\\n' +
+	'0 & 0 & 0 & 0\\\\\\\n' +
+	'0 & 0 & 0 & 0\n' +
+'\\end{matrix}\n' +
+'\\right]\n' +
+'$$\n'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
+
+function laTexMatrix33() {
+	let str = '\n' +
+'$$\n' +
+'\\left[\n' +
+'\\begin{matrix}\n' +
+	'0 & 0 & 0\\\\\\\n' +
+	'0 & 0 & 0\\\\\\\n' +
+	'0 & 0 & 0\n' +
+'\\end{matrix}\n' +
+'\\right]\n' +
+'$$\n'
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': str} )
 }
