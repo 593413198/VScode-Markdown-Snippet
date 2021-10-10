@@ -21,10 +21,10 @@ export function activate(context: vscode.ExtensionContext) {
 		items.push({label: 'Color: Green', description: '改变字体：绿色',  command: changeColorGreen });
 		items.push({label: 'Color: Blue', description: '改变字体：蓝色',  command: changeColorBlue });
 
-		items.push({label: 'Color: KeyWords', description: '改变字体：关键字',  command: changeColorKeyWord });
+		items.push({label: 'Type: KeyWords', description: '改变字体：关键字',  command: changeColorKeyWord });
 
-		items.push({label: 'css: Image', description: '插入图片',  command: insertImage });
-		items.push({label: 'css: Table', description: '插入表格',  command: insertTable });
+		items.push({label: 'CSS: Image', description: '插入图片',  command: insertImage });
+		items.push({label: 'CSS: Table', description: '插入表格',  command: insertTable });
 
 		items.push({label: 'LaTeX: fraction', description: 'LaTeX：分式',  command: laTexFraction });
 		items.push({label: 'LaTeX: sub-tag', description: 'LaTeX：下标', command: laTexSubtag });
