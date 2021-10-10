@@ -6,27 +6,22 @@ import * as vscode from 'vscode';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "markdown-snippet" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
 	let disposable = vscode.commands.registerCommand('markdown-snippet.surround', () => {
 		interface CommandQuickPickItem extends vscode.QuickPickItem {
 			command: () => any;
 		}
 	
 		let items: CommandQuickPickItem[] = [];
-		items.push({ description: '选中-加粗', label: 'Font Bold', command: surroundWithBold });
-		items.push({ description: '选中-删除线', label: 'Font Strike-through', command: surroundWithStrikeThrough });
-		items.push({ description: '选中-斜体', label: 'Font Italic', command: surroundWithItalic });
-		items.push({ description: '选中-代码', label: 'Font Code', command: surroundWithCode });
+		items.push({label: 'Font: Bold', description: '选中-加粗', command: surroundWithBold });
+		items.push({label: 'Font: Strike-through', description: '选中-删除线', command: surroundWithStrikeThrough });
+		items.push({label: 'Font: Italic', description: '选中-斜体', command: surroundWithItalic });
+		items.push({label: 'Font: Code', description: '选中-代码', command: surroundWithCode });
 
 		items.push({label: 'Color: Red', description: '改变字体：红色',  command: changeColorRed });
 		items.push({label: 'Color: Green', description: '改变字体：绿色',  command: changeColorGreen });
 		items.push({label: 'Color: Blue', description: '改变字体：蓝色',  command: changeColorBlue });
+
+		items.push({label: 'Color: KeyWords', description: '改变字体：关键字',  command: changeColorKeyWord });
 
 		// TODO: 需要一种通用逻辑, 选中"改变选中颜色"后, 能够输入#fffff(eg)来插入css样式
 	
@@ -70,21 +65,29 @@ function surroundWithCode() {
 
 function changeColorRed() {
 	let color:string = '#FF1E10';
-	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
+	let snippet = '<font color=' + color + '>**${TM_SELECTED_TEXT}**</font>';
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
 
 function changeColorGreen() {
 	let color:string = '#1AAD19';
-	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
+	let snippet = '<font color=' + color + '>**${TM_SELECTED_TEXT}**</font>';
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
 
 function changeColorBlue() {
 	let color:string = '#1A9BFF';
-	let snippet = '<font color=' + color + '>${TM_SELECTED_TEXT}</font>';
+	let snippet = '<font color=' + color + '>**${TM_SELECTED_TEXT}**</font>';
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': snippet} )
+}
+
+
+function changeColorKeyWord() {
+	let color:string = '#ef6d3b';
+	let snippet = '<font color=' + color + '>**${TM_SELECTED_TEXT}**</font>';
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
