@@ -21,7 +21,13 @@
     "commands": [
       {
         "command": "markdown-snippet.surround",
-        "title": "surround with ..."
+        "title": "常用的markdown补全"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "markdown-snippet.surround",
+        "key": "shift+1"
       }
     ]
   },
