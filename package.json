@@ -27,7 +27,7 @@
     "keybindings": [
       {
         "command": "markdown-snippet.surround",
-        "key": "shift+1"
+        "key": "ctrl+2"
       }
     ]
   },

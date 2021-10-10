@@ -26,6 +26,11 @@ export function activate(context: vscode.ExtensionContext) {
 		items.push({label: 'css: Image', description: '插入图片',  command: insertImage });
 		items.push({label: 'css: Table', description: '插入表格',  command: insertTable });
 
+		items.push({label: 'LaTeX: fraction', description: 'LaTeX：分式',  command: laTexFraction });
+		items.push({label: 'LaTeX: sub-tag', description: 'LaTeX：下标', command: laTexSubtag });
+		// items.push({label: 'LaTeX: 矩阵3x3',  command: insertTable });
+		// items.push({label: 'LaTeX: 矩阵4x4',  command: insertTable });
+
 		// TODO: 需要一种通用逻辑, 选中"改变选中颜色"后, 能够输入#fffff(eg)来插入css样式
 	
 		vscode.window.showQuickPick(items, { matchOnDetail: true, matchOnDescription: true }).then(selectedItem => {
@@ -111,7 +116,17 @@ function insertTable() {
 		{'snippet': str} )
 }
 
+function laTexFraction() {
+	let str = '$\\frac{1}{a}$'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
 
+function laTexSubtag() {
+	let str = '$$a_{1}$'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
