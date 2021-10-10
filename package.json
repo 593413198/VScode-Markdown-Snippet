@@ -4,7 +4,7 @@
   "displayName": "Markdown Snippet",
   "description": "markdown代码补全,css样式内嵌等",
   "publisher": "luhao",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "engines": {
     "vscode": "^1.60.0"
   },
