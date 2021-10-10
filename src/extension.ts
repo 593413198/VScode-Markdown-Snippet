@@ -97,7 +97,7 @@ function changeColorKeyWord() {
 
 // ---------- Insert ---------
 function insertImage() {
-	let str:string = '<img src="http://www.luhao.wiki/images/xxx.png" alt="" width="500"'
+	let str:string = '<img src="http://www.luhao.wiki/images/xxx.png" alt="" width="500">'
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': str} )
 }
