@@ -23,6 +23,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		items.push({label: 'Color: KeyWords', description: '改变字体：关键字',  command: changeColorKeyWord });
 
+		items.push({label: 'css: Image', description: '插入图片',  command: insertImage });
+		items.push({label: 'css: Table', description: '插入表格',  command: insertTable });
+
 		// TODO: 需要一种通用逻辑, 选中"改变选中颜色"后, 能够输入#fffff(eg)来插入css样式
 	
 		vscode.window.showQuickPick(items, { matchOnDetail: true, matchOnDescription: true }).then(selectedItem => {
@@ -91,6 +94,23 @@ function changeColorKeyWord() {
 	vscode.commands.executeCommand('editor.action.insertSnippet', 
 		{'snippet': snippet} )
 }
+
+// ---------- Insert ---------
+function insertImage() {
+	let str:string = '<img src="http://www.luhao.wiki/images/xxx.png" alt="" width="500"'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
+
+function insertTable() {
+	let str:string = '\n' + 
+'| t1   | t2   | t3   |\n' +
+'| :--: | :--: | :--: |\n' +
+'| | | |\n'
+	vscode.commands.executeCommand('editor.action.insertSnippet', 
+		{'snippet': str} )
+}
+
 
 
 // this method is called when your extension is deactivated
